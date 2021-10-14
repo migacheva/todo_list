@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         ArrayList<String> list_task = new ArrayList<>();
+//        String task_name = "";
         String help_text = "Вам доступны следующие команды: \n " +
                 "all/help - все доступные команды \n " +
                 "add - добавление новой задачи \n " +
@@ -23,20 +24,33 @@ public class main {
                 System.out.print("Введите название задачи:  ");
                 String task_name = in.nextLine();
                 if (!(task_name.equals("") | task_name.equals(" ") | task_name.equals("\n")))
-                    list_task.add("[x] " + task_name);
+                    list_task.add("[-] " + task_name);
                 else{
                     System.out.println("Вводить пустые строки, пробелы, перенос строки и обижать котяток нельзя.");
                 }
             }
             if (cmd.equals("print")) {
-                System.out.println("Список текущих задач: ");
-                for (String s : list_task) {
-                    System.out.println(s);
+                if (!(cmd.equals("print [all]"))) {
+                    System.out.println("Список всех текущих задач: ");
+                    for (String s : list_task) {
+                        System.out.println(s);
+                    }
+                } else {
+                    System.out.println("Список всех текущих задач: ");
+                    for (String s : list_task) {
+                        System.out.println(s);
+                    }
                 }
             }
             if (cmd.equals("toggle")) {
-                System.out.print("До свидания! ");
-                in.close();
+                if (task_name.equals("")){
+                    System.out.println("Не найдено ни одной задачи");
+                }
+                else{
+                    String state = task_name.indexOf("[");
+                    task_name = task_name.replace("[-]", "[v]");
+
+                }
             }
             if (cmd.equals("bonus")) {
                 System.out.print("Минутка добра: \n Ты классный, у тебя все получится! ");
