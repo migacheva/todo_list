@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class helper {
     static boolean check_exist_task(String[][] list_task) {
-        if (list_task[1][0] == ""){
+        if (list_task[1][0].equals("")){
             System.out.println("Не найдено ни одной задачи");
             return true;
         }
@@ -12,7 +12,7 @@ public class helper {
     static void toggle_task(String in_progress, String done, String[][] list_task, Integer id_task) {
         if (id_task > 0 & id_task < list_task.length)
         {
-            if (list_task[id_task][1] == in_progress) {
+            if (list_task[id_task][1].equals(in_progress)) {
                 list_task[id_task][1] = done;
             }
             else {
@@ -33,7 +33,7 @@ public class helper {
         System.out.println("Список невыполненных задач: ");
         for (int i = 1; i < list_task.length; ++i) {
             for(int j = 0; j < list_task[i].length; ++j) {
-                if (list_task[i][1] == in_progress) {
+                if (list_task[i][1].equals(in_progress)) {
                     System.out.print(list_task[i][j]);
                 }
             }
